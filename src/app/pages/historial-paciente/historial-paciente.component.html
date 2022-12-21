@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-8 align-self-center">
+                <h3 class="text-themecolor">Historial de registros clínicos</h3>
+            </div>
+            <div class="col-md-4 align-self-center">
+                <input id="demo-input-search2" type="text" name="filtrarNombre" [(ngModel)]="filtrarNombre"  placeholder="Buscar por nombre" autocomplete="off">
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="table-responsive animated fadeInDown">
+            <table class="table full-color-table full-primary-table hover-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>                            
+                        <th>Ver</th>                          
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hist of newhistoriales | filtrartabla: filtrarNombre | paginate: { itemsPerPage: 5, currentPage: PaginaActual }">
+                        <td>{{hist.nompaciente}}</td>                                                                                        
+                        <td> 
+                            <a (click)="VerExp(hist.idpaciente);" class="btn btn-success" ><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>                                        
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="PaginaActual = $event"></pagination-controls>
+        </div>                     
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->

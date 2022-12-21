@@ -1,0 +1,135 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">            
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex animated fadeIn">
+                            <div class="mr-auto">
+                                <div class="form-group">                                  
+                                    <h3 class="text-themecolor">Datos de Pacientes</h3> </div>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" name="filtrarNombre" [(ngModel)]="filtrarNombre" placeholder="Buscar por nombre" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive animated fadeInDown">
+                            <table class="table full-color-table full-primary-table hover-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Edad</th>
+                                        <th>Teléfono</th>
+                                        <th>Dirección</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let datos of pacientes | filtrartabla: filtrarNombre | paginate: { itemsPerPage: 5, currentPage: p }">
+                                        <td>{{datos.idpaciente}}</td>
+                                        <td>{{datos.nompaciente}}</td>
+                                        <td>{{datos.edadpaciente}}</td>
+                                        <td>{{datos.telpaciente}}</td>
+                                        <td>{{datos.dirpaciente}}</td>
+                                        <td> 
+                                            <a (click)="seleccionarPaciente(datos.idpaciente);" class="btn btn-warning" data-toggle="modal" data-target=".example2-modal-lg"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                        <td> 
+                                            <a (click)="EliminarPaciente(datos.idpaciente)" class="btn btn-success"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                        
+                                    </tr>                                        
+                                </tbody>
+                            </table>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </div>                            
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+    <div class="card-body">
+        <!-- sample modal content -->
+        <div class="modal fade example2-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Modificar datos del paciente</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="card">
+                        <form>
+                        <div class="card-body">
+                                <div class="form-body">
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Nombre completo</label>
+                                                <input type="text"  class="form-control" name="paciente.nompaciente" [(ngModel)]="paciente.nompaciente" placeholder="Brenda Torres" >
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Edad</label>
+                                                <input type="text"  class="form-control" name="paciente.edadpaciente" [(ngModel)]="paciente.edadpaciente"  placeholder="31 años">
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Teléfono</label>
+                                                <input type="text"   class="form-control" name="paciente.telpaciente" [(ngModel)]="paciente.telpaciente"  placeholder="(999) 999-9999">
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Dirección</label>
+                                                <input type="text"  class="form-control" name="paciente.dirpaciente" [(ngModel)]="paciente.dirpaciente"  placeholder="Av. Venustiano carranza 43, Atlacomulco, Edo. De Méx.">
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->                                        
+                                </div>
+                                <div class="form-actions">
+                                    <button (click)="editarPaciente();" class="btn btn-success"> <i class="fa fa-check" ></i> Guardar </button> 
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->                                
+    </div>
+</div>
+</div>
+</div>

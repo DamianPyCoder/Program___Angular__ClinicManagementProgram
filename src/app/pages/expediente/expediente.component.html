@@ -1,0 +1,469 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid animated fadeIn">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Expediente</h3>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                        <div class="card-body">
+                            <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny">
+                                <thead>
+                                    <tr >
+                                        <th data-toggle="true"> Fecha Elaborada</th>
+                                        <th data-toggle="true"> Fecha Citada</th>
+                                        <th> Editar </th>
+                                        <th> Ver </th>
+                                        <th> Imprimir Receta </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let datos of exp" >
+                                        <td>{{ datos.fechahistorial }}</td>
+                                        <td>{{ datos.citahistorial }}</td>
+                                        <td> 
+                                            <a (click)="seleccionarExpediente(datos.idhistorial);" class="btn btn-warning" data-toggle="modal" data-target=".example3-modal-lg"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                        <td> 
+                                            <a (click)="seleccionarExpediente(datos.idhistorial);" class="btn btn-success" data-toggle="modal" data-target=".example4-modal-lg"><i class="fa fa-eye"></i></a>
+                                        </td>
+                                        <td> 
+                                            <a (click)="seleccionarReceta(datos.idhistorial);" class="btn btn-info" ><i class="fa fa-print"></i></a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>            
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-body">
+            <!-- sample modal content -->
+            <div class="modal fade example3-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">Expediente</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="card">
+                            <form>
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="col-12">
+                                        <div class="form-group row" >
+                                            <label for="example-text-input" class="col-2 col-form-label">FECHA ELABORADA</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.fechahistorial" [(ngModel)]="expediente.fechahistorial" >
+                                            </div>
+                                            <label for="example-search-input" class="col-2 col-form-label">LABOR</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.laborhistorial" [(ngModel)]="expediente.laborhistorial" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="example-search-input" class="col-2 col-form-label">PESO</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.pesohistorial" [(ngModel)]="expediente.pesohistorial" >
+                                            </div>
+                                            <label for="example-search-input" class="col-2 col-form-label">TALLA</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.tallahistorial" [(ngModel)]="expediente.tallahistorial" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-search-input" class="col-2 col-form-label">FC</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.fchistorial" [(ngModel)]="expediente.fchistorial" >
+                                            </div>
+                                            <label for="example-search-input" class="col-2 col-form-label">FR</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.frhistorial" [(ngModel)]="expediente.frhistorial" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-search-input" class="col-2 col-form-label">TA</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.tahistorial" [(ngModel)]="expediente.tahistorial" >
+                                            </div>
+                                            <label for="example-search-input" class="col-2 col-form-label">TEMP</label>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="expediente.temphistorial" [(ngModel)]="expediente.temphistorial" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                        <button type="button" (click)="mostrar=!mostrar" class=" btn btn-outline-primary">Mostrar Mas Datos</button>
+                                        </div>
+                                        <div *ngIf="mostrar">
+                                            
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">ANTECEDENTES HEREDOFAMILIARES</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="expediente.ahhistorial" [(ngModel)]="expediente.ahhistorial" >
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">ANTECEDENTES PERSONALES NO PATOLOGICOS</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="expediente.apnphistorial" [(ngModel)]="expediente.apnphistorial" >
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">HEMOTIPO</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="expediente.hemotipohistorial" [(ngModel)]="expediente.hemotipohistorial" >
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">ALERGIAS</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="expediente.alergiashistorial" [(ngModel)]="expediente.alergiashistorial" >
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-group">
+                                                <label>ANTECEDENTES PERSONALES PATOLOGICOS</label>
+                                                <textarea class="form-control" rows="4" name="expediente.apphistorial" [(ngModel)]="expediente.apphistorial"></textarea>
+                                            </div>
+                    
+                                            <div class="form-group">
+                                                <label>ANTECEDENTES GINECOOBSTÉTRICOS</label>
+                                                <textarea class="form-control" rows="4" name="expediente.aghistorial" [(ngModel)]="expediente.aghistorial" ></textarea>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                <label>QX</label>
+                                                <textarea class="form-control" rows="8" name="expediente.qxhistorial" [(ngModel)]="expediente.qxhistorial" ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>PA</label>
+                                            <textarea class="form-control" rows="7" name="expediente.pahistorial" [(ngModel)]="expediente.pahistorial" ></textarea>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <label>S</label>
+                                            <textarea class="form-control" rows="8" name="expediente.shistorial" [(ngModel)]="expediente.shistorial"></textarea>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <label>O</label>
+                                            <textarea class="form-control" rows="8" name="expediente.ohistorial" [(ngModel)]="expediente.ohistorial"></textarea>
+                                        </div>
+                                                
+                                        <div class="form-group">
+                                            <label>A</label>
+                                            <textarea class="form-control" rows="8" name="expediente.ahistorial" [(ngModel)]="expediente.ahistorial"></textarea>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <label>DX</label>
+                                            <textarea class="form-control" rows="8" name="expediente.dxhistorial" [(ngModel)]="expediente.dxhistorial"></textarea>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <label>TX</label>
+                                            <textarea class="form-control" rows="8" name="expediente.txhistorial" [(ngModel)]="expediente.txhistorial"></textarea>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <label>PLAN</label>
+                                            <textarea class="form-control" rows="8" name="expediente.planhistorial" [(ngModel)]="expediente.planhistorial"></textarea>
+                                        </div>                                                    
+                                        <div class="form-group row">
+                                            <label for="example-search-input" class="col-2 col-form-label">CITA PROXIMA</label>
+                                            <div class="col-10">
+                                                <input class="form-control" type="text" name="expediente.citahistorial" [(ngModel)]="expediente.citahistorial" >
+                                            </div>
+                                        </div>      
+                                        <div class="form-group">
+                                            <label>TRATAMIENTO</label>
+                                            <textarea class="form-control" rows="8" name="expediente.diagnostico" [(ngModel)]="expediente.diagnostico"></textarea>
+                                        </div>                                                                                                   
+                                </div>               
+                                </div>
+                                <div class="form-actions">
+                                    <button (click)="editarExpediente();" class="btn btn-success"> <i class="fa fa-check"></i> Guardar </button> 
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->                                
+    </div>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-body">
+            <!-- sample modal content -->
+            <div class="modal fade example4-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">Expediente </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="card">
+                            <form id="contenidoexpediente">
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="col-12">
+                                        <div class="form-group row" >
+                                            <label id="cajafecha" for="example-search-input" class="col-2 col-form-label">FECHA</label>
+                                            <div class="col-4">
+                                                <label for="example-text-input" class="col-form-label">{{expediente.fechahistorial}}</label>
+                                            </div>
+                                            <label for="example-search-input" class="col-2 col-form-label">LABOR</label>
+                                            <div class="col-4">
+                                                <label for="example-text-input" class="col-form-label">{{expediente.laborhistorial}}</label>
+                                            </div>                                                
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr >
+                                                        <th scope="col">PESO</th>
+                                                        <th scope="col">TALLA</th>
+                                                        <th scope="col">FC</th>
+                                                        <th scope="col">FR</th>
+                                                        <th scope="col">TA</th>
+                                                        <th scope="col">TEMP</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr >
+                                                        <td >{{expediente.pesohistorial}}</td>
+                                                        <td >{{expediente.tallahistorial}}</td>
+                                                        <td >{{expediente.fchistorial}}</td>
+                                                        <td >{{expediente.frhistorial}}</td>
+                                                        <td >{{expediente.tahistorial}}</td>
+                                                        <td >{{expediente.temphistorial}}</td>
+                                                    </tr>       
+                                                </tbody>
+                                            </table>                                                
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <button type="button" (click)="mostrar=!mostrar" class=" btn btn-outline-primary">Mostrar Mas Datos</button>
+                                        </div>
+                                        <div *ngIf="mostrar">                                                
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-form-label">ANTECEDENTES HEREDOFAMILIARES</label>
+                                                <div class="col-12">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.ahhistorial}}</label>
+                                                </div>
+                                            </div>                        
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">ANTECEDENTES PERSONALES NO PATOLOGICOS</label>
+                                                <div class="col-12">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.apnphistorial}}</label>
+                                                </div>
+                                            </div>                        
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">HEMOTIPO</label>
+                                                <div class="col-12">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.hemotipohistorial}}</label>
+                                                </div>
+                                            </div>                        
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">ALERGIAS</label>
+                                                <div class="col-12">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.alergiashistorial}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">ANTECEDENTES PERSONALES PATOLOGICOS</label>
+                                                <div class="col-12">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.apphistorial}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">ANTECEDENTES GINECOOBSTÉTRICOS</label>
+                                                <div class="col-10">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.aghistorial}}</label>
+                                                </div>
+                                            </div>                                            
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-12 col-form-label">QX</label>
+                                                <div class="col-10">
+                                                    <label for="example-text-input" class="col-form-label">{{expediente.qxhistorial}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table" >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">PA</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.pahistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>   
+                                        <div class="table-responsive-lg">
+                                            <table class="table" >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">S</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.shistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>                        
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">O</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.ohistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">A</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.ahistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">DX</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.dxhistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">TX</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.txhistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">PLAN</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.planhistorial}}</label></td>                                                                        
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>                                             
+                                        <div class="form-group row">
+                                            <label for="example-search-input" class="col-12 col-form-label">CITA PROXIMA</label>
+                                            <div class="col-10">
+                                                <label for="example-text-input" class="col-form-label">{{expediente.citahistorial}}</label>
+                                            </div>
+                                        </div>    
+                                        <div class="table-responsive-lg">
+                                            <table class="table"  >
+                                                <thead >
+                                                    <tr class="col-12">
+                                                        <th class="col-12">Tratamiento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="col-12">
+                                                        <td ><label for="example-search-input" class="col-12 col-form-label">{{expediente.diagnostico}}</label></td>
+                                                    </tr>                            
+                                                </tbody>
+                                            </table>                                                
+                                        </div>                                                                                                     
+                                    </div>               
+                                </div>
+                               
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->                                
+    </div>
+</div>
+</div>
+</div>
