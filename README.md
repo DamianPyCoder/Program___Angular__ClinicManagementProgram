@@ -15,40 +15,7 @@ The system is adaptable to any medical specialty.
 
 
 ### Download the repository
-#### Spanish
-```diff
-Abre la terminal.
-```
-```diff
-Para desplazarte a la carpeta usa el comando:
-cd +"ruta"
-```
-```diff
-Para instalar las dependencias de Angular:
-npm install
-```
-```diff
-Desde la terminal para abrir el proyecto en visual studio:
-code . 
-```
-```diff
-Para ejecutar el proyecto en el navegador:
-Terminal/Nueva terminal
-ng serve --o
-```
-```diff
-Si surge un error es posible que sea por la politica de restricción comprueba si pone "restricted" con el comando
-Get-ExecutionPolicy
-En ese caso escribe: 
-Set-ExecutionPolicy Unrestricted
-```
-```diff
-Si sigue dando error abrir la consola powershell y ejecutrar como administrador porque desde la terminal de code 
-no abrimos la consola con permisos de administracion y volvemos a escribir el comando Set-ExecutionPolicy Unrestricted
-```
 
-
-#### English
 
 ```diff
 Open the terminal and navigate to the folder with the command "cd + 'path' "
