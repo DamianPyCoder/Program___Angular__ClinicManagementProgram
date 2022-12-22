@@ -11,6 +11,8 @@ The system is adaptable to any medical specialty.
 ![](https://github.com/DamianPyCoder/DamianPyCoder/blob/main/icons/angular_icon.png)
 ![](https://github.com/DamianPyCoder/DamianPyCoder/blob/main/icons/firebaseIcon100.png)
 ![](https://github.com/DamianPyCoder/DamianPyCoder/blob/main/icons/visualstudio.png)
+![](https://github.com/DamianPyCoder/DamianPyCoder/blob/main/icons/coffeescript.png)
+![](https://github.com/DamianPyCoder/DamianPyCoder/blob/main/icons/sass.png)
 
 
 
