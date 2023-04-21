@@ -1,4 +1,4 @@
-# Dental Clinic Management Application
+Clinic Management Application
 
 This program is part of the practice of an Angular course in which I create a patient management system. With which you can register patients and fill out the file, keep track of the next appointment, see the history and register it, you can view the history on the screen and print medical prescriptions and there are many more functions and tools such as a search engine implemented on which returns a list and you can change the configuration of how many patients will be returned in the search.
 
